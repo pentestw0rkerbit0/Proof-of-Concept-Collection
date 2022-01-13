@@ -1,0 +1,11 @@
+rk.c
+rk.o
+rk.ko
+*.mod.*
+Module.symvers
+modules.order
+.cache.mk
+.rk*
+*.ur-safe
+.tmp_versions/
+*.cmd

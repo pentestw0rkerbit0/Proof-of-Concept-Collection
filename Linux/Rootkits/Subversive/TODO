@@ -1,0 +1,23 @@
+REVIEW:
+* Check SMAP/SMEP compatibility
+* Review all system calls
+
+FEATURES:
+* hide file :
+	- hide all /proc/<pid>/<file|dir>
+	- inotify support in subversive_ctl daemon
+* hook sys_open to avoid file integrity check
+* hide connections
+* .so injection
+* thread injection
+* handle reboot :
+	- sysv
+	- systemd
+	- /etc/modules
+	- vmlinuz
+	- watch changes via nsnotify
+* ARM :
+	- debug registers
+	- inline hooking
+* Keylogger :
+	- write keylogger buffer inside kernel

@@ -1,0 +1,16 @@
+*.o
+*.o.d
+*.mod.c
+*.ko
+*.cmd
+*.symvers
+*.order
+.tmp_versions
+core/syscall_nr.c
+tests/user/int80_user
+tests/user/syscall_32_user
+tests/user/syscall_64_user
+tests/user/sysenter_32_user
+tests/user/syscall_tbl_32_user
+tests/user/syscall_tbl_64_user
+tests/user/vdso_32_user
