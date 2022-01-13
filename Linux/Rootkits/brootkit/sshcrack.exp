@@ -1,0 +1,26 @@
+#!/usr/bin/expect
+
+set IP [lindex $argv 0]
+set USER [lindex $argv 1]
+set PASSWD [lindex $argv 2]
+set CMD [lindex $argv 3]
+set TIMEOUT [lindex $argv 4]
+set timeout [lindex $argv 4]
+
+#spawn -noecho ssh -o ServerAliveInterval=$TIMEOUT -o ConnectTimeout=$TIMEOUT -t $USER@$IP $CMD
+spawn -noecho ssh -o ServerAliveInterval=2 -o ConnectTimeout=2 -t $USER@$IP $CMD
+#spawn -noecho ssh -o ServerAliveInterval=2 -o ConnectTimeout=2 -t $USER@$IP
+expect {
+	"(yes/no)" { send "yes\r"; exp_continue }
+	"*assword:" { send "$PASSWD\r" }
+	"Name or service not known" { exit 8}
+	"No route to host" { exit 4 }
+	timeout { exit 5 }
+	eof { exit 0 }
+}
+
+expect {
+        "*assword:" { exit 3 }
+        "uid=" { exit 6 }
+        eof { exit 7 }
+}
